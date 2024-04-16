@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     private static InputManager m_instance;
     public static InputManager Instance { get { return m_instance; } }
 
-    private InputControls m_inputControls;
+    private PlayerActions m_inputControls;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        m_inputControls = new InputControls();
+        m_inputControls = new PlayerActions();
         m_inputControls.Enable();
     }
 
@@ -30,8 +30,8 @@ public class InputManager : MonoBehaviour
         m_inputControls.Disable();
     }
 
-    public Vector2 GetPlayerMovement()
+    public Vector3 GetPlayerMovement()
     {
-        return m_inputControls.Player.Move.ReadValue<Vector2>();
+        return m_inputControls.PlayerInputs.Move.ReadValue<Vector2>();
     }
 }

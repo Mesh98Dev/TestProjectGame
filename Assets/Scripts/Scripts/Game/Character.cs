@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private Rigidbody3D m_rigidbody;
+    private Rigidbody m_rigidbody;
     private bool m_isMoving;
     private Vector3 m_direction;
 
     private void Awake()
     {
-        m_rigidbody = GetComponent<Rigidbody3D>();
+        m_rigidbody = GetComponent<Rigidbody>();
     }
 
     protected void Move(Vector3 direction, float speed)
