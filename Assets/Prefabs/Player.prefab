@@ -69,8 +69,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be2f70ae19ff4c0c89f873328a127a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
+  moveSpeed: 5
+  gunObject: {fileID: 0}
+  bulletSpawnPoint: {fileID: 3753768137502801571}
+  bulletSpeed: 10
+  fireRate: 0.1
 --- !u!54 &8385489760497813918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -240,6 +243,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efc05d39792443a8b5c887071c6eb6a, type: 3}
+--- !u!4 &3753768137502801571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1070350730909333850, guid: 4efc05d39792443a8b5c887071c6eb6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4989224870624196613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4807576008756830190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4efc05d39792443a8b5c887071c6eb6a,
