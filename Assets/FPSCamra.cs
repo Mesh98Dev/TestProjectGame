@@ -1,79 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(CharacterController))]
-public class FPSController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public Camera playerCamera;
-    public float walkSpeed = 6f;
-    public float runSpeed = 12f;
-    public float jumpPower = 7f;
-    public float gravity = 10f;
+    // Variables for movement speed and rotation speed
+    public float moveSpeed = 5f;
+    public float rotationSpeed = 5f;
 
+    // Reference to the main camera
+    private Camera mainCamera;
 
-    public float lookSpeed = 2f;
-    public float lookXLimit = 45f;
-
-
-    Vector3 moveDirection = Vector3.zero;
-    float rotationX = 0;
-
-    public bool canMove = true;
-
-
-    CharacterController characterController;
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Find the main camera in the scene
+        mainCamera = Camera.main;
     }
 
     void Update()
     {
+        // Get player input for movement
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        #region Handles Movment
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        // Get the forward direction of the camera without vertical component
+        Vector3 cameraForward = mainCamera.transform.forward;
+        cameraForward.y = 0f; // Zero out the vertical component to keep the movement on the XZ plane
 
-        // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
-        float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        // Calculate movement direction based on camera's forward vector
+        Vector3 movement = (horizontalInput * mainCamera.transform.right + verticalInput * cameraForward).normalized;
 
-        #endregion
-
-        #region Handles Jumping
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        // If there's movement input, rotate player towards the movement direction
+        if (movement != Vector3.zero)
         {
-            moveDirection.y = jumpPower;
-        }
-        else
-        {
-            moveDirection.y = movementDirectionY;
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
+        // Move the player based on the movement direction and speed
+        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
 
-        #endregion
+        // Handle camera rotation (for first-person perspective)
+        // Get mouse input for rotation
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
 
-        #region Handles Rotation
-        characterController.Move(moveDirection * Time.deltaTime);
+        // Rotate the player horizontally based on mouse X movement
+        transform.Rotate(Vector3.up * mouseX * rotationSpeed);
 
-        if (canMove)
-        {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-        }
-
-        #endregion
+        // Rotate the main camera vertically based on mouse Y movement
+        // Note: Clamp the vertical rotation to limit the camera's range of motion
+        Vector3 currentRotation = mainCamera.transform.eulerAngles;
+        float desiredRotationX = currentRotation.x - mouseY;
+        mainCamera.transform.rotation = Quaternion.Euler(desiredRotationX, currentRotation.y, currentRotation.z);
     }
 }
