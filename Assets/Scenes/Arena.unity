@@ -215,6 +215,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &65416322
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65416313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 810ca37508c69f44e9c71ebdb9fa0bea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &212643965 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9033951058019887872, guid: 2346f4736299f4216b77c2e0793d6c6e,
@@ -374,7 +396,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5990f13548ba5254bb4efacb91e4ee70,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.168
+      value: 0.463
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5990f13548ba5254bb4efacb91e4ee70,
         type: 3}
@@ -426,6 +448,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 5990f13548ba5254bb4efacb91e4ee70,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 810ca37508c69f44e9c71ebdb9fa0bea, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 5990f13548ba5254bb4efacb91e4ee70,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 5990f13548ba5254bb4efacb91e4ee70,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -446,6 +483,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 65416319}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5990f13548ba5254bb4efacb91e4ee70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 65416322}
   m_SourcePrefab: {fileID: 100100000, guid: 5990f13548ba5254bb4efacb91e4ee70, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -767,7 +808,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b969d6c73ca3314eae68c858c742b48,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.192
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b969d6c73ca3314eae68c858c742b48,
         type: 3}
@@ -839,6 +880,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1574440941}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b969d6c73ca3314eae68c858c742b48,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1574440942}
   m_SourcePrefab: {fileID: 100100000, guid: 0b969d6c73ca3314eae68c858c742b48, type: 3}
 --- !u!1 &1110111560
 GameObject:
@@ -1073,6 +1118,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &1574440942
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574440935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5990f13548ba5254bb4efacb91e4ee70, type: 3}
+  m_Controller: {fileID: 9100000, guid: 810ca37508c69f44e9c71ebdb9fa0bea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1792112093
 GameObject:
   m_ObjectHideFlags: 0
