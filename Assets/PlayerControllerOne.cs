@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerControllerone : MonoBehaviour
+public class PlayerControllerOne : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;                // Movement speed of the player
     [SerializeField] private float lookSpeed = 2f;                // Mouse look sensitivity
