@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.46169513, g: 0.5124164, b: 0.58993304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -119,6 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &9181201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6144,6 +6145,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46222fdad88171540ac3118f38b794ee, type: 3}
+=======
+>>>>>>> origin/Add-New-body-for-player
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6261,6 +6264,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+<<<<<<< HEAD
 --- !u!1001 &411099729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6881,6 +6885,9 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae21f94be6c7d374db2a242be202ccec, type: 3}
 --- !u!1 &469746527
+=======
+--- !u!1 &789829263
+>>>>>>> origin/Add-New-body-for-player
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23678,6 +23685,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1001 &1794216263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28224,6 +28232,9 @@ Transform:
   m_PrefabInstance: {fileID: 2146630769}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3102882421529525432
+=======
+--- !u!1001 &1925377751
+>>>>>>> origin/Add-New-body-for-player
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -28231,6 +28242,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: -8679510916240595784, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
       propertyPath: gunObject
@@ -28255,55 +28267,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.15
+=======
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7840519
+>>>>>>> origin/Add-New-body-for-player
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: -0.029
       objectReference: {fileID: 0}
     - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.3
+=======
+      value: 0
+>>>>>>> origin/Add-New-body-for-player
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.3834257
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3603053947646219133, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7034228320164248245, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    - target: {fileID: 2751027687307977091, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
         type: 3}
       propertyPath: m_Name
+<<<<<<< HEAD
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -28315,12 +28343,22 @@ PrefabInstance:
       addedObject: {fileID: 301367568}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2346f4736299f4216b77c2e0793d6c6e, type: 3}
+=======
+      value: P_LPSP_FP_CH
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+>>>>>>> origin/Add-New-body-for-player
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 410087041}
+<<<<<<< HEAD
   - {fileID: 3102882421529525432}
   - {fileID: 1792112097}
   - {fileID: 469746528}
@@ -28329,3 +28367,9 @@ SceneRoots:
   - {fileID: 132710416}
   - {fileID: 486699488}
   - {fileID: 2083642807}
+=======
+  - {fileID: 789829267}
+  - {fileID: 1110111564}
+  - {fileID: 1792112097}
+  - {fileID: 1925377751}
+>>>>>>> origin/Add-New-body-for-player
