@@ -18,8 +18,8 @@ public class camTest : MonoBehaviour
     void Update()
     {
         // Camera rotation based on mouse movement
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Horizontal") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Vertical") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Clamp vertical rotation to prevent flipping
