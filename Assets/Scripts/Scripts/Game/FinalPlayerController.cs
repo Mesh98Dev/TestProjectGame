@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class FinalPlayerController : MonoBehaviour
 {
     // Movement variables
@@ -13,9 +11,8 @@ public class FinalPlayerController : MonoBehaviour
     private bool isGrounded; // Flag to check if player is grounded
 
     // Shooting variables
-    public Transform shootPoint; // Point from where bullets are shot
-    public GameObject bulletPrefab; // Prefab of the bullet object
-    public float bulletForce = 20f; // Force applied to the bullet
+    public ParticleSystem gunParticles; // Reference to the gun particles system
+    public Transform gunEnd; // Point from where gun particles are emitted
     public float fireRate = 0.5f; // Rate of fire (bullets per second)
     private float nextFireTime = 0f; // Time until next allowed shot
 
@@ -34,6 +31,8 @@ public class FinalPlayerController : MonoBehaviour
     // UI variables
     public UIController uiController; // Reference to the UIController script
 
+    public Transform cameraTransform;
+
     private void Start()
     {
         currentHealth = maxHealth; // Initialize current health to maximum
@@ -49,7 +48,7 @@ public class FinalPlayerController : MonoBehaviour
         // Handle shooting
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
-            Shoot();
+            Shoot(); // Call the method to shoot
             nextFireTime = Time.time + 1f / fireRate; // Update next allowed shot time
         }
 
@@ -59,16 +58,16 @@ public class FinalPlayerController : MonoBehaviour
         // Handle melee attack
         if (Input.GetKeyDown(KeyCode.F))
         {
-            MeleeAttack();
+            MeleeAttack(); // Call the method for melee attack
         }
     }
 
     private void HandleMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal"); // Get horizontal input
-        float verticalInput = Input.GetAxis("Vertical"); // Get vertical input
+        float verticalInput = Input.GetAxis("Vertical"); // Get vertical input s
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized; // Calculate movement direction
+        Vector3 moveDirection = cameraTransform.rotation * new Vector3(horizontalInput, 0f, verticalInput).normalized; // Calculate movement direction
 
         // Move the player based on input
         if (moveDirection != Vector3.zero)
@@ -80,16 +79,16 @@ public class FinalPlayerController : MonoBehaviour
         // Handle player jumping
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Jump();
+            Jump(); // Call the method to make the player jump
         }
     }
 
     private void Shoot()
     {
-        // Instantiate a bullet and apply force to it
-        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(shootPoint.forward * bulletForce, ForceMode.Impulse);
+        // Play the gun particles at the gunEnd position
+        gunParticles.transform.position = gunEnd.position; // Set the gun particles position
+        gunParticles.transform.rotation = gunEnd.rotation; // Set the gun particles rotation
+        gunParticles.Play(); // Trigger the gun particles
     }
 
     private void Jump()
@@ -101,34 +100,34 @@ public class FinalPlayerController : MonoBehaviour
     private void HandleWeaponSwitching()
     {
         // Handle scrolling to switch weapons
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        float scroll = Input.GetAxis("Mouse ScrollWheel"); // Get mouse scroll input
         if (scroll > 0f)
         {
-            SwitchWeapon(1);
+            SwitchWeapon(1); // Switch to the next weapon
         }
         else if (scroll < 0f)
         {
-            SwitchWeapon(-1);
+            SwitchWeapon(-1); // Switch to the previous weapon
         }
     }
 
     private void SwitchWeapon(int direction)
     {
         // Switch to the next or previous weapon based on direction
-        currentWeaponIndex += direction;
+        currentWeaponIndex += direction; // Update the current weapon index
         if (currentWeaponIndex < 0)
         {
-            currentWeaponIndex = weapons.Length - 1;
+            currentWeaponIndex = weapons.Length - 1; // Loop back to the last weapon if index goes below 0
         }
         else if (currentWeaponIndex >= weapons.Length)
         {
-            currentWeaponIndex = 0;
+            currentWeaponIndex = 0; // Loop back to the first weapon if index exceeds the length of weapons array
         }
 
         // Activate the current weapon and deactivate others
         for (int i = 0; i < weapons.Length; i++)
         {
-            weapons[i].SetActive(i == currentWeaponIndex);
+            weapons[i].SetActive(i == currentWeaponIndex); // Activate the current weapon and deactivate others
         }
     }
 
@@ -142,7 +141,7 @@ public class FinalPlayerController : MonoBehaviour
         // Check if the player is grounded
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            isGrounded = true; // Set the grounded flag to true
         }
     }
 
@@ -151,9 +150,7 @@ public class FinalPlayerController : MonoBehaviour
         // Check if the player leaves the ground
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
+            isGrounded = false; // Set the grounded flag to false
         }
     }
 }
-
-    // Method to deduct player health when

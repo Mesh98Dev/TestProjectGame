@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        /*
         // Get player input for movement
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -33,11 +34,12 @@ public class PlayerController : MonoBehaviour
         if (movement != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
         // Move the player based on the movement direction and speed
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        //transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        */
 
         // Handle camera rotation (for first-person perspective)
         // Get mouse input for rotation

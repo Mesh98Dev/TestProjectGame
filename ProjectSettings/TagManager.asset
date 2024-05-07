@@ -16,6 +16,8 @@ TagManager:
   - Wood (Static)
   - Dirt (Static)
   - Wood
+  - camera2
+  - Ground
   layers:
   - Default
   - TransparentFX
