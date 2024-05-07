@@ -8,6 +8,8 @@ public class FinalPlayerController : MonoBehaviour
     public float moveSpeed = 5f; // Speed of player movement
     public float sprintSpeed = 10f; // Speed of player sprinting
     public float jumpForce = 10f; // Force applied when player jumps
+    public float gravity = -9.81f; // Gravity force
+    private Vector3 velocity; // Current velocity of the player
     private bool isGrounded; // Flag to check if player is grounded
 
     // Shooting variables
@@ -32,12 +34,17 @@ public class FinalPlayerController : MonoBehaviour
     public UIController uiController; // Reference to the UIController script
 
     public Transform cameraTransform;
+    private CharacterController characterController;
 
     private void Start()
     {
-        currentHealth = maxHealth; // Initialize current health to maximum
-        uiController.UpdateHealthBar(currentHealth, maxHealth); // Update UI health bar
-        uiController.UpdatePoints(playerPoints); // Update UI points display
+        // Initialize health and UI
+        currentHealth = maxHealth;
+        uiController.UpdateHealthBar(currentHealth, maxHealth);
+        uiController.UpdatePoints(playerPoints);
+
+        // Get CharacterController component
+        characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -62,45 +69,50 @@ public class FinalPlayerController : MonoBehaviour
         }
     }
 
+    // Handles player movement
     private void HandleMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal"); // Get horizontal input
-        float verticalInput = Input.GetAxis("Vertical"); // Get vertical input s
+        // Get input for horizontal and vertical movement
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = cameraTransform.rotation * new Vector3(horizontalInput, 0f, verticalInput).normalized; // Calculate movement direction
+        // Calculate movement direction relative to camera
+        Vector3 moveDirection = (cameraTransform.forward * verticalInput + cameraTransform.right * horizontalInput).normalized;
 
-        // Move the player based on input
-        if (moveDirection != Vector3.zero)
-        {
-            float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed; // Apply sprint speed if shift key is pressed
-            transform.Translate(moveDirection * speed * Time.deltaTime); // Move the player
-        }
+        // Calculate movement speed based on sprinting
+        float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+        Vector3 moveVelocity = moveDirection * speed;
+
+        // Apply gravity
+        velocity.y += gravity * Time.deltaTime;
+
+        // Move the player using CharacterController
+        characterController.Move((moveVelocity + velocity) * Time.deltaTime);
+
+        // Check if the player is grounded
+        isGrounded = characterController.isGrounded;
 
         // Handle player jumping
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Jump(); // Call the method to make the player jump
+            velocity.y = jumpForce; // Set vertical velocity for jumping
         }
     }
 
+    // Handles shooting
     private void Shoot()
     {
         // Play the gun particles at the gunEnd position
-        gunParticles.transform.position = gunEnd.position; // Set the gun particles position
-        gunParticles.transform.rotation = gunEnd.rotation; // Set the gun particles rotation
-        gunParticles.Play(); // Trigger the gun particles
+        gunParticles.transform.position = gunEnd.position;
+        gunParticles.transform.rotation = gunEnd.rotation;
+        gunParticles.Play();
     }
 
-    private void Jump()
-    {
-        // Apply upward force to the player for jumping
-        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
+    // Handles weapon switching
     private void HandleWeaponSwitching()
     {
         // Handle scrolling to switch weapons
-        float scroll = Input.GetAxis("Mouse ScrollWheel"); // Get mouse scroll input
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll > 0f)
         {
             SwitchWeapon(1); // Switch to the next weapon
@@ -111,46 +123,68 @@ public class FinalPlayerController : MonoBehaviour
         }
     }
 
+    // Switches weapons based on direction
     private void SwitchWeapon(int direction)
     {
-        // Switch to the next or previous weapon based on direction
-        currentWeaponIndex += direction; // Update the current weapon index
+        currentWeaponIndex += direction;
         if (currentWeaponIndex < 0)
         {
-            currentWeaponIndex = weapons.Length - 1; // Loop back to the last weapon if index goes below 0
+            currentWeaponIndex = weapons.Length - 1;
         }
         else if (currentWeaponIndex >= weapons.Length)
         {
-            currentWeaponIndex = 0; // Loop back to the first weapon if index exceeds the length of weapons array
+            currentWeaponIndex = 0;
         }
 
         // Activate the current weapon and deactivate others
         for (int i = 0; i < weapons.Length; i++)
         {
-            weapons[i].SetActive(i == currentWeaponIndex); // Activate the current weapon and deactivate others
+            weapons[i].SetActive(i == currentWeaponIndex);
         }
     }
 
+    // Handles melee attack
     private void MeleeAttack()
-    {
-        // Implement melee attack logic
-    }
+    {/*
+        // Perform a sphere cast around the player to detect nearby enemies
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, meleeRange);
 
+    // Loop through all colliders detected in the sphere cast
+    foreach (Collider col in hitColliders)
+    {
+        // Check if the collider belongs to an enemy
+        EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            // Play melee attack animation
+            // Your code to trigger the melee attack animation goes here
+
+            // Play melee attack sound
+            // Your code to play the sound effect for the melee attack goes here
+
+            // Deal damage to the enemy
+            enemyHealth.TakeDamage(meleeDamage);
+        }
+     */}
+    
+
+    // Check if the player is grounded when colliding with objects
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the player is grounded
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true; // Set the grounded flag to true
+            isGrounded = true; // Check if the player touches the ground
         }
     }
 
+    // Check if the player leaves the ground
     private void OnCollisionExit(Collision collision)
     {
-        // Check if the player leaves the ground
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false; // Set the grounded flag to false
+            isGrounded = false; // Check if the player leaves the ground
         }
     }
 }
+
+
