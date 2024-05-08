@@ -4811,8 +4811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4eae383348958a479c1f3cbd56e8b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 5
+  sensX: 0
+  sensY: 0
+  orientation: {fileID: 0}
 --- !u!1001 &308887178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28714,6 +28715,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385489760497813918, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385489760497813918, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
