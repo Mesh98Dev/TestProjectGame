@@ -40,8 +40,8 @@ public class FinalPlayerController : MonoBehaviour
     {
         // Initialize health and UI
         currentHealth = maxHealth;
-        uiController.UpdateHealthBar(currentHealth, maxHealth);
-        uiController.UpdatePoints(playerPoints);
+        //uiController.UpdateHealthBar(currentHealth, maxHealth);
+        //uiController.UpdatePoints(playerPoints);
 
         // Get CharacterController component
         characterController = GetComponent<CharacterController>();
