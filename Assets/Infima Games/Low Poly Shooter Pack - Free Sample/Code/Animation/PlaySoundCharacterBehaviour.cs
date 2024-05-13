@@ -70,6 +70,8 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //We need to get the character component.
             playerCharacter ??= ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
+            if (playerCharacter ==  null)
+                return;
 
             //Get Inventory.
             playerInventory ??= playerCharacter.GetInventory();
