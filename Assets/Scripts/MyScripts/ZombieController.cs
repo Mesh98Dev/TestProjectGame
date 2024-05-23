@@ -64,7 +64,7 @@ public class ZombieController : MonoBehaviour
         FinalPlayerController playerController = playerTransform.GetComponent<FinalPlayerController>();
         if (playerController != null)
         {
-            playerController.TakeDamage(attackDamage);
+          //  playerController.TakeDamage(attackDamage);
         }
 
         // Wait for the attack cooldown
