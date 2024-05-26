@@ -36,7 +36,7 @@ public class Buellt : MonoBehaviour
 
     private void OncCollisionEnter(Collision collision) 
     {
-        if (collision.gameObject.tag == )
+        if (collision.gameObject.tag == "Enemy" )
         {
             EnemyController.instance.TakeDamage();
             Destroy(gameObject);

@@ -162,7 +162,7 @@ public class SecondPlayerController : MonoBehaviour
                 // Your code to play the sound effect for the melee attack goes here
 
                 // Deal damage to the enemy
-                enemyHealth.TakeDamage(meleeDamage);
+                //enemyHealth.TakeDamage(meleeDamage);
             }
         }
     }

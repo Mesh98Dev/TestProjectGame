@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectsWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         CurrentHealth = maxHealth;
     }
 

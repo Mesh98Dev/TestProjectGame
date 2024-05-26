@@ -68,5 +68,7 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.transform.rotation = playerViewPoint.rotation;
     }
 
+    
+
 
 }
