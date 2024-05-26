@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bullet;
     public float timeBetweenShoots;
     public bool canShoots = true;
+    public ParticleSystem shootParticles;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +28,9 @@ public class PlayerShooting : MonoBehaviour
     }
         void Shoot() 
         {
-            Instantiate(bullet,firePos.position, firePos.rotation);
-             StartCoroutine(ShootDelay());
+            var bulletInstance = Instantiate(bullet,firePos.position, firePos.rotation);
+            shootParticles.Play();
+            StartCoroutine(ShootDelay());
         }
 
     IEnumerator ShootDelay()
