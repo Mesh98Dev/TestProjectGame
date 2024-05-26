@@ -79,7 +79,7 @@ public class EnemyController : MonoBehaviour
         CurrentHealth -= healthDamageAmount;
         if (CurrentHealth <= 0) 
         {
-            Destroy(gameObject)
+            Destroy(gameObject);
         }
     }
 }
