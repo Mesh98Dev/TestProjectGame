@@ -35,11 +35,12 @@ public class Buellt : MonoBehaviour
         }
     }
 
-    private void OncCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision) 
     {
         if (collision.gameObject.tag == "Enemy" )
         {
-            EnemyController.instance.TakeDamage();
+            Destroy(collision.gameObject);
+            //EnemyController.instance.TakeDamage();
             Destroy(gameObject);
             
         }
