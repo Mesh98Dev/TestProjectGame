@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         Debug.Log(distance);
         if (distance < detectingRange)
         {
-            //anim.SetBool("inRange", true);
+//anim.SetBool("inRange", true); // enemy see player
 
             if (distance <= attackRange && !isAttacking)
             {
@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            //anim.SetBool("inRange", false);
+//anim.SetBool("inRange", false); // idle 
         }
     }
 
@@ -76,24 +76,24 @@ public class EnemyController : MonoBehaviour
         Vector3 lookDirection = playerPosition - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, Time.deltaTime * moveSpeed);
-        //moving anim
+//enemy moving anim
     }
 
     IEnumerator AttackForDelay()
     {
         isAttacking = true;
-       //anim.SetTrigger("Attack");
+//anim.SetTrigger("Attack");
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
 
     public void TakeDamage()
     {
-        //anim enem shot
+//anim enem getting shot
         currentHealth -= healthDamageAmount;
         if (currentHealth <= 0)
         {
-            //anim death
+//anim enemy death death
         }
     }
 }
