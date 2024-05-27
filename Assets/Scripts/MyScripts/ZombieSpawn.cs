@@ -9,14 +9,13 @@ public class ZombieSpawn : MonoBehaviour
     
     public GameObject zombiePrefab;
     public Transform zombieSpawnPosition;
-    private float repatcycle;
 
    
    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") 
         {
-            InvokeRepeating("Envoke spawner", 1f,repatcycle);
+            Invoke("EnemySpawner", 1f);
             Destroy(gameObject, 10f);
         }
     }

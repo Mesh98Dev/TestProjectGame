@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public float detetctingRange;
     public float movSpeed;
 
@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
         Debug.Log(distance);
         if (distance < detetctingRange) 
         {
-            anim.SetBool("inRange", true);
+            //anim.SetBool("inRange", true);
 
             if (distance <= attackRange && !isAttacking ) 
             {
@@ -54,7 +54,9 @@ public class EnemyController : MonoBehaviour
                 MoveTowards();
             }
         }
-            else { anim.SetBool("inRange",false); }
+            else { 
+                //anim.SetBool("inRange",false);
+                }
     }
 
     void MoveTowards() 
@@ -69,7 +71,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator AttackForDealy() 
     {
         isAttacking = true;
-        anim.SetTrigger("Attack");
+        //anim.SetTrigger("Attack");
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
