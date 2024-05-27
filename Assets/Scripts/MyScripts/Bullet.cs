@@ -8,6 +8,7 @@ public class Buellt : MonoBehaviour
     public float bulletSpeed;
     private Rigidbody rb;
     // Start is called before the first frame update
+    Vector3 velocity;
 
     private void Awake()
     {
@@ -16,13 +17,13 @@ public class Buellt : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * bulletSpeed;
+        velocity = transform.forward * bulletSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        rb.velocity = velocity;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,11 +35,12 @@ public class Buellt : MonoBehaviour
         }
     }
 
-    private void OncCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision) 
     {
         if (collision.gameObject.tag == "Enemy" )
         {
-            EnemyController.instance.TakeDamage();
+            Destroy(collision.gameObject);
+            //EnemyController.instance.TakeDamage();
             Destroy(gameObject);
             
         }

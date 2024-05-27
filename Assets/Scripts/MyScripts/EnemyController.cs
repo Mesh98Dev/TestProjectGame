@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player;
-    public float detetctingRange;
-    public float movSpeed;
+    private GameObject player;
+    public float detectingRange;
+    public float moveSpeed;
 
     private Animator anim;
 
     private float attackRange = 3f;
-    private bool isAttacking= false;
+    private bool isAttacking = false;
     public float timeBetweenAttacks = 0.5f;
 
-    public int CurrentHealth;
-    public int maxHealth=100;
+    public int currentHealth;
+    public int maxHealth = 100;
     public int healthDamageAmount;
 
     public static EnemyController instance;
 
-
+    private Rigidbody rb; // Added Rigidbody component
 
     private void Awake()
     {
@@ -33,7 +32,9 @@ public class EnemyController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        CurrentHealth = maxHealth;
+        currentHealth = maxHealth;
+
+        rb = GetComponent<Rigidbody>(); // Get Rigidbody component
     }
 
     // Update is called once per frame
@@ -41,43 +42,51 @@ public class EnemyController : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
         Debug.Log(distance);
-        if (distance < detetctingRange) 
+        if (distance < detectingRange)
         {
-            anim.SetBool("inRange", true);
+            //anim.SetBool("inRange", true);
 
-            if (distance <= attackRange && !isAttacking ) 
+            if (distance <= attackRange && !isAttacking)
             {
-                StartCoroutine(AttackForDealy());
+                StartCoroutine(AttackForDelay());
             }
-            else if (!isAttacking) 
+            else if (!isAttacking)
             {
                 MoveTowards();
             }
         }
-            else { anim.SetBool("inRange",false); }
+        else
+        {
+            //anim.SetBool("inRange", false);
+        }
     }
 
-    void MoveTowards() 
+    void MoveTowards()
     {
-        Vector3 playerPosition = new Vector3 (player.transform.position.x, transform.position.y,player.transform.position.z );
-        Vector3 dirction = (playerPosition - transform.forward).normalized;
+        Vector3 playerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        Vector3 direction = (playerPosition - transform.position).normalized; // Fixed typo and used transform.position instead of transform.forward
 
-        transform.position = Vector3.MoveTowards(transform.position, playerPosition, movSpeed * Time.deltaTime);
-        transform.LookAt(playerPosition);
+        // Use Rigidbody to move the enemy
+        rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+
+        // Rotate the enemy to face the player
+        Vector3 lookDirection = playerPosition - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+        rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, Time.deltaTime * moveSpeed);
     }
 
-    IEnumerator AttackForDealy() 
+    IEnumerator AttackForDelay()
     {
         isAttacking = true;
-        anim.SetTrigger("Attack");
+        //anim.SetTrigger("Attack");
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
 
-    public void TakeDamage() 
+    public void TakeDamage()
     {
-        CurrentHealth -= healthDamageAmount;
-        if (CurrentHealth <= 0) 
+        currentHealth -= healthDamageAmount;
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: undead_serpent_NM
-    second: {fileID: 2800000, guid: 44e5c5fa9a084774ab665f8567c055bf, type: 3}
+    second: {fileID: 2800000, guid: 427a11d1674b942e2b21a2749c3deb23, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: undead_serpent_TXTR
-    second: {fileID: 2800000, guid: cd3e6397cfa6fcc49b5aae44572dfe9b, type: 3}
+    second: {fileID: 2800000, guid: 29978d947bae84f3e8d5cc48f7581c2f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
