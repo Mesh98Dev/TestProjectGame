@@ -40,6 +40,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth <= 0)
+            return;
+    
         float distance = Vector3.Distance(transform.position, player.transform.position);
         Debug.Log(distance);
         if (distance < detectingRange)
@@ -73,22 +76,24 @@ public class EnemyController : MonoBehaviour
         Vector3 lookDirection = playerPosition - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, Time.deltaTime * moveSpeed);
+        //moving anim
     }
 
     IEnumerator AttackForDelay()
     {
         isAttacking = true;
-        //anim.SetTrigger("Attack");
+       //anim.SetTrigger("Attack");
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
 
     public void TakeDamage()
     {
+        //anim enem shot
         currentHealth -= healthDamageAmount;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            //anim death
         }
     }
 }
