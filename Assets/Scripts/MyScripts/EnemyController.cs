@@ -22,9 +22,13 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody rb; // Added Rigidbody component
 
+[SerializeField] HealthBar healthBar;
+
     private void Awake()
     {
         instance = this;
+        
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     // Start is called before the first frame update
@@ -33,6 +37,8 @@ public class EnemyController : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         currentHealth = maxHealth;
+        
+ healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         rb = GetComponent<Rigidbody>(); // Get Rigidbody component
     }
@@ -91,6 +97,9 @@ public class EnemyController : MonoBehaviour
     {
 //anim enem getting shot
         currentHealth -= healthDamageAmount;
+
+ healthBar.UpdateHealthBar(currentHealth, maxHealth);
+
         if (currentHealth <= 0)
         {
 //anim enemy death death
