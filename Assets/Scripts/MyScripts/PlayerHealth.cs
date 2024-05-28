@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
             PlayerObject.SetActive(false);
             //anim palyer die
             StartCoroutine(Wait3Seconds());
-            Debug.Log("Player Died");
+           // Debug.Log("Player Died");
         }
     }
 

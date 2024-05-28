@@ -1004,6 +1004,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 260188763}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &261812532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400022, guid: bfda376b0f658a748870ea8f7c2c7c03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1368906604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &269774195
 GameObject:
   m_ObjectHideFlags: 0
@@ -6256,6 +6262,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2704396947307233872, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: firePos
+      value: 
+      objectReference: {fileID: 261812532}
     - target: {fileID: 2704396947307233872, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
       propertyPath: crosshair
