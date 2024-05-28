@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private GameObject player;
+    public GameObject player;
     public float detectingRange;
     public float moveSpeed;
 
@@ -22,9 +22,13 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody rb; // Added Rigidbody component
 
+[SerializeField] HealthBar healthBar;
+
     private void Awake()
     {
         instance = this;
+        
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     // Start is called before the first frame update
@@ -33,6 +37,8 @@ public class EnemyController : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         currentHealth = maxHealth;
+        
+ healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         rb = GetComponent<Rigidbody>(); // Get Rigidbody component
     }
@@ -44,7 +50,7 @@ public class EnemyController : MonoBehaviour
             return;
     
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance < detectingRange)
         {
 //anim.SetBool("inRange", true); // enemy see player
@@ -83,6 +89,7 @@ public class EnemyController : MonoBehaviour
     {
         isAttacking = true;
 //anim.SetTrigger("Attack");
+        player.GetComponent<PlayerHealth>().DealDamage();
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
@@ -91,9 +98,13 @@ public class EnemyController : MonoBehaviour
     {
 //anim enem getting shot
         currentHealth -= healthDamageAmount;
+
+ healthBar.UpdateHealthBar(currentHealth, maxHealth);
+
         if (currentHealth <= 0)
         {
 //anim enemy death death
+            Destroy(gameObject, 5);
         }
     }
 }

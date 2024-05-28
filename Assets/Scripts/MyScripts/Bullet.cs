@@ -30,7 +30,8 @@ public class Buellt : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy") 
         {
-            Destroy(other.gameObject);
+            other.GetComponent<EnemyController>().TakeDamage();
+            //Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
@@ -39,7 +40,8 @@ public class Buellt : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" )
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage();
+            //Destroy(collision.gameObject);
             //EnemyController.instance.TakeDamage();
             Destroy(gameObject);
             
