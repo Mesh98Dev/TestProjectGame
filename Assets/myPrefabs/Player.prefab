@@ -691,8 +691,9 @@ MonoBehaviour:
   firePos: {fileID: 8065212344239504526}
   bullet: {fileID: 3946501078323964253, guid: 7d63dbd02963f40aa86ed4537bf4c504, type: 3}
   timeBetweenShoots: 0.2
-  canShoots: 1
+  canShoot: 1
   shootParticles: {fileID: 1449887262556732130}
+  crosshair: {fileID: 0}
 --- !u!114 &4370163059247679494
 MonoBehaviour:
   m_ObjectHideFlags: 0
