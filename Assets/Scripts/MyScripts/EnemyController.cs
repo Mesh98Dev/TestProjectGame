@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private GameObject player;
+    public GameObject player;
     public float detectingRange;
     public float moveSpeed;
 
@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
             return;
     
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance < detectingRange)
         {
 //anim.SetBool("inRange", true); // enemy see player
@@ -89,6 +89,7 @@ public class EnemyController : MonoBehaviour
     {
         isAttacking = true;
 //anim.SetTrigger("Attack");
+        player.GetComponent<PlayerHealth>().DealDamage();
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
@@ -103,6 +104,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
 //anim enemy death death
+            Destroy(gameObject, 5);
         }
     }
 }
