@@ -161,7 +161,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.DefaultCompany.TestProjectGame
-    Standalone: com.DefaultCompany.TestProjectGame
+    Standalone: com.SDAgames.StayAlive101Demo
   buildNumber:
     Bratwurst: 0
     Standalone: 0
