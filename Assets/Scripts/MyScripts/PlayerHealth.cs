@@ -22,16 +22,19 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DealDamage()
     {
-        
-        currentHealth -= DamageAmount;
+        if (currentHealth > 0)
+            currentHealth -= DamageAmount;
         Debug.Log($"Player damage: {currentHealth} {DamageAmount}");
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
-            GetComponentInChildren<Camera>().transform.SetParent(null);
+            var camera = GetComponentInChildren<Camera>();
+            if (camera != null)
+                camera.transform.SetParent(null);
             PlayerObject.SetActive(false);
             //anim palyer die
             StartCoroutine(Wait3Seconds());
+           // Debug.Log("Player Died");
         }
     }
 

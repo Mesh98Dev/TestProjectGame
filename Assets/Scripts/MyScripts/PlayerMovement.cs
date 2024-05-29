@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
-    public CharacterController characterController;
+   // public CharacterController characterController;
     public float horizontalInput;
     public float verticalInput;
     public Vector3 moveDirction;
@@ -20,18 +20,22 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mouseInput;
     public bool invertLook;
     private Camera playerCamera;
+    public Rigidbody rb;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
         playerCamera = Camera.main;
+        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
+        mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity; //change it to tkae unity new input system
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z );
         verticalRotation += mouseInput.y;
         verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); 
@@ -44,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal"); //change it to tkae unity new input system
+        verticalInput = Input.GetAxis("Vertical"); //change it to tkae unity new input system
         moveDirction = new Vector3(horizontalInput * moveSpeed,0f, verticalInput * moveSpeed);
 
-        if (Input.GetKey(KeyCode.LeftShift) )
+        if (Input.GetKey(KeyCode.LeftShift) ) //change it to tkae unity new input system
         {
            currentMoveSpeed = runSpeed; 
         }       
@@ -59,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         movement = ((transform.forward * moveDirction.z) + (transform.right * moveDirction.x)) .normalized * currentMoveSpeed;
 
-        characterController.Move(movement * Time.deltaTime);
+        //characterController.Move(movement * Time.deltaTime);
+        rb.velocity = movement * Time.deltaTime;
     }
 
     private void LateUpdate()
