@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canShoot) //change it to tkae unity new input system
+        if (InputManager.Instance.actions.Player_PC.shooting.WasPressedThisFrame() && canShoot) //change it to tkae unity new input system
         {
             // shoot
             Shoot();

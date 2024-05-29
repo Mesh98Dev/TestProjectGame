@@ -1,6 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using InfimaGames.LowPolyShooterPack;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,8 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public Vector3 moveDirction;
-    public Vector3 movement;
+    public Vector2 movement;
     public float runSpeed;
+    
     public float currentMoveSpeed;
     
     public Transform playerViewPoint;
@@ -20,22 +25,43 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mouseInput;
     public bool invertLook;
     private Camera playerCamera;
-    public Rigidbody rb;
+    private Rigidbody rb;
+
+    public InputManager inputManager;
+
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake ()
     {
         //characterController = GetComponent<CharacterController>();
         playerCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
 
-    }
+         if (rb != null)  
+         {
+            Debug.Log("rigidbody is null for the player");
+         }
+
+         inputManager.actions.Player_PC.ZoomCamera.performed += Context => Zoom(Context.ReadValue<float>());     
+         }
+    /* void Start()
+    {
+        //characterController = GetComponent<CharacterController>();
+        playerCamera = Camera.main;
+        rb = GetComponent<Rigidbody>();
+         playerActions = new PlayerActions();
+
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity; //change it to tkae unity new input system
+        
+        //mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity; //change it to tkae unity new input system
+        mouseInput = inputManager.actions.Player_PC.RotateCamera.ReadValue<Vector2>();
+
+
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z );
         verticalRotation += mouseInput.y;
         verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); 
@@ -48,23 +74,33 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        horizontalInput = Input.GetAxis("Horizontal"); //change it to tkae unity new input system
-        verticalInput = Input.GetAxis("Vertical"); //change it to tkae unity new input system
+       mouseInput = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
+        horizontalInput = mouseInput.x;//Input.GetAxis("Horizontal"); //change it to tkae unity new input system
+        verticalInput = mouseInput.y;//Input.GetAxis("Vertical"); //change it to tkae unity new input system
         moveDirction = new Vector3(horizontalInput * moveSpeed,0f, verticalInput * moveSpeed);
 
-        if (Input.GetKey(KeyCode.LeftShift) ) //change it to tkae unity new input system
-        {
+       // if (Input.GetKey(KeyCode.LeftShift) ) //change it to tkae unity new input system
+        //{
            currentMoveSpeed = runSpeed; 
-        }       
-        else    
+        //}       
+        //else    
         {
-            currentMoveSpeed = runSpeed;
+        //    currentMoveSpeed = runSpeed;
         }
 
-        movement = ((transform.forward * moveDirction.z) + (transform.right * moveDirction.x)) .normalized * currentMoveSpeed;
+        //movement = ((transform.forward * moveDirction.z) + (transform.right * moveDirction.x)) .normalized * currentMoveSpeed;
 
         //characterController.Move(movement * Time.deltaTime);
-        rb.velocity = movement * Time.deltaTime;
+        //rb.velocity = movement * Time.deltaTime;
+        movement = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
+        rb.velocity = new Vector3 (movement.x, 0,movement.y) * moveSpeed;
+    }
+
+    
+   //new method 
+    private void Zoom(float zoomInput)
+    {
+        Debug.Log(zoomInput);
     }
 
     private void LateUpdate()
@@ -73,6 +109,16 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.transform.rotation = playerViewPoint.rotation;
     }
 
+//new methods
+    private void OnEnable()
+    {
+        inputManager.actions.Player_PC.Enable();
+    }
+    private void OnDisable()
+    {
+        inputManager.actions.Player_PC.Disable();
+    }
+    
     
 
 

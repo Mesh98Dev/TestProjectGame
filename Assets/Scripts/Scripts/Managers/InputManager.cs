@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 
     private PlayerActions m_inputControls;
 
+    public PlayerActions actions => m_inputControls;
+
     private void Awake()
     {
         m_instance = this;
@@ -32,6 +34,6 @@ public class InputManager : MonoBehaviour
 
     public Vector3 GetPlayerMovement()
     {
-        return m_inputControls.PlayerInputs.Move.ReadValue<Vector2>();
+        return m_inputControls.Player_PC.Move.ReadValue<Vector2>();
     }
 }
