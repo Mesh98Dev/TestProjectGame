@@ -6454,13 +6454,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201965932491255566, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201965932491255566, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
       propertyPath: runSpeed
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5201965932491255566, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
       propertyPath: moveSpeed
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6390272652131968456, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}

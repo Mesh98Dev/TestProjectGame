@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
-    public CharacterController characterController;
+   // public CharacterController characterController;
     public float horizontalInput;
     public float verticalInput;
     public Vector3 moveDirction;
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
+        mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity; //change it to tkae unity new input system
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z );
         verticalRotation += mouseInput.y;
         verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); 
@@ -48,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal"); //change it to tkae unity new input system
+        verticalInput = Input.GetAxis("Vertical"); //change it to tkae unity new input system
         moveDirction = new Vector3(horizontalInput * moveSpeed,0f, verticalInput * moveSpeed);
 
-        if (Input.GetKey(KeyCode.LeftShift) )
+        if (Input.GetKey(KeyCode.LeftShift) ) //change it to tkae unity new input system
         {
            currentMoveSpeed = runSpeed; 
         }       

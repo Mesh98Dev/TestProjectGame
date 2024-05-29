@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canShoot)
+        if (Input.GetMouseButtonDown(0) && canShoot) //change it to tkae unity new input system
         {
             // shoot
             Shoot();
