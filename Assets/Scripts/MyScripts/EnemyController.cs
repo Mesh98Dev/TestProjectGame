@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         currentHealth = maxHealth;
         
- healthBar.UpdateHealthBar(currentHealth, maxHealth);
+ //healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         rb = GetComponent<Rigidbody>(); // Get Rigidbody component
     }
@@ -58,6 +58,8 @@ public class EnemyController : MonoBehaviour
             if (distance <= attackRange && !isAttacking)
             {
                 StartCoroutine(AttackForDelay());
+                anim.SetBool("running", false);
+                anim.SetBool("attack", true);
             }
             else if (!isAttacking)
             {
@@ -66,7 +68,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-//anim.SetBool("inRange", false); // idle 
+            anim.SetBool("running", false);
+            anim.SetBool("attack", false);
         }
     }
 
@@ -82,7 +85,8 @@ public class EnemyController : MonoBehaviour
         Vector3 lookDirection = playerPosition - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, Time.deltaTime * moveSpeed);
-//enemy moving anim
+        //enemy moving anim
+        anim.SetBool("running", true);
     }
 
     IEnumerator AttackForDelay()
@@ -103,7 +107,8 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-//anim enemy death death
+            //anim enemy death death
+            anim.SetTrigger("die");
             Destroy(gameObject, 5);
         }
     }
