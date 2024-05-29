@@ -1,42 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Added to use UI components
 
 public class PlayerShooting : MonoBehaviour
 {
-
     public Transform firePos;
     public GameObject bullet;
-    public float timeBetweenShoots;
-    public bool canShoots = true;
+    public float timeBetweenShoots = 0.5f; // Corrected the default value
+    public bool canShoot = true; // Corrected the naming convention
     public ParticleSystem shootParticles;
-    // Start is called before the first frame update
+
+    public Image crosshair; // Added reference to the crosshair image
+
     void Start()
     {
-        
+        if (crosshair != null)
+        {
+            // Ensure the crosshair is visible at the start
+            crosshair.enabled = true;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canShoots)
+        if (InputManager.Instance.actions.Player_PC.shooting.WasPressedThisFrame() && canShoot) //change it to tkae unity new input system
         {
-            //shoot
+            // shoot
             Shoot();
         }
-
     }
-        void Shoot() 
+
+    void Shoot()
+    {
+        var bulletInstance = Instantiate(bullet, firePos.position, firePos.rotation); //change it from firepoos to  croos hair
+        if (shootParticles != null)
         {
-            var bulletInstance = Instantiate(bullet,firePos.position, firePos.rotation);
             shootParticles.Play();
-            StartCoroutine(ShootDelay());
         }
+        StartCoroutine(ShootDelay());
+    }
 
     IEnumerator ShootDelay()
     {
-        canShoots = false;
+        canShoot = false;
         yield return new WaitForSeconds(timeBetweenShoots);
-        canShoots = true;
+        canShoot = true;
     }
 }

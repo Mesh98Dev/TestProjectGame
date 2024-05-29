@@ -24,7 +24,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     ""name"": ""PlayerActions"",
     ""maps"": [
         {
-            ""name"": ""PlayerInputs"",
+            ""name"": ""Player_PC"",
             ""id"": ""0d6453b5-a4e0-4847-b468-780371b46969"",
             ""actions"": [
                 {
@@ -35,6 +35,42 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""09036c1d-187d-46a4-999e-11c685c4e99f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9fc7676-ddad-4357-b796-67b2579f5e72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""af9e42b3-d158-4247-9963-df39ec2a26c4"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ZoomCamera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""07957385-1e84-4843-ba14-663e4f605d06"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -85,13 +121,264 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Right"",
                     ""id"": ""cff63540-4787-4b79-99e5-798677f05013"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4935be6-d790-424b-be54-0bb9ad701527"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6b851dc-060f-462d-8a68-6725cd4f2052"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d4979fa-d66f-4ef5-863e-c1e74b69410d"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""391777f9-55d5-4ada-bfc9-ab42b2dd29c1"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b49e238-94c1-494f-93fe-ff609aafe500"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84df17a6-f980-4045-9af8-6019301c735e"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfbc974f-e53c-47d8-80e8-1403e7d9cab1"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4f2e2ef-9a5d-40a2-885f-d492c63978d5"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""ZoomCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Player_Mobile"",
+            ""id"": ""ced34d8c-3c0c-4bc3-8ad3-01f885b663dc"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6fd3f961-6eda-4a47-b340-e7c3dc094331"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""45677532-ac1e-4b92-8e2c-755200129de8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""b699c518-c8fa-4cf0-bfd4-67ad01c88457"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""2a983920-79a3-4504-b380-8325972d2694"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ZoomCamera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""e36c1618-4e1d-4623-9a1a-f1bc964a4ec9"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""551f5a68-29d8-47ef-bf6f-7c305ae9b86a"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""0ba3083e-74b4-4e43-a538-8bcdf67731f7"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""fe1465cc-b04d-4686-8455-7fd26b2d9e27"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""9fcfaa02-406e-473f-b160-f997768b22e7"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""f6fef5f4-bfdf-460a-93c7-c1da9d8afda7"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7339248-996d-4cab-823b-7ce02821e151"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da42bc83-20f2-4b4f-a756-50b968f03f07"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0a4c54b-a03c-4c0b-b3b6-b61917567fb3"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""012fc6c2-c8e0-45cd-9bc9-249409283519"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8af98d72-4f87-469a-9b00-e184437dec24"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""ZoomCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -115,9 +402,20 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // PlayerInputs
-        m_PlayerInputs = asset.FindActionMap("PlayerInputs", throwIfNotFound: true);
-        m_PlayerInputs_Move = m_PlayerInputs.FindAction("Move", throwIfNotFound: true);
+        // Player_PC
+        m_Player_PC = asset.FindActionMap("Player_PC", throwIfNotFound: true);
+        m_Player_PC_Move = m_Player_PC.FindAction("Move", throwIfNotFound: true);
+        m_Player_PC_shooting = m_Player_PC.FindAction("shooting", throwIfNotFound: true);
+        m_Player_PC_Sprint = m_Player_PC.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_PC_RotateCamera = m_Player_PC.FindAction("RotateCamera", throwIfNotFound: true);
+        m_Player_PC_ZoomCamera = m_Player_PC.FindAction("ZoomCamera", throwIfNotFound: true);
+        // Player_Mobile
+        m_Player_Mobile = asset.FindActionMap("Player_Mobile", throwIfNotFound: true);
+        m_Player_Mobile_Move = m_Player_Mobile.FindAction("Move", throwIfNotFound: true);
+        m_Player_Mobile_shooting = m_Player_Mobile.FindAction("shooting", throwIfNotFound: true);
+        m_Player_Mobile_Sprint = m_Player_Mobile.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_Mobile_RotateCamera = m_Player_Mobile.FindAction("RotateCamera", throwIfNotFound: true);
+        m_Player_Mobile_ZoomCamera = m_Player_Mobile.FindAction("ZoomCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -176,51 +474,161 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerInputs
-    private readonly InputActionMap m_PlayerInputs;
-    private List<IPlayerInputsActions> m_PlayerInputsActionsCallbackInterfaces = new List<IPlayerInputsActions>();
-    private readonly InputAction m_PlayerInputs_Move;
-    public struct PlayerInputsActions
+    // Player_PC
+    private readonly InputActionMap m_Player_PC;
+    private List<IPlayer_PCActions> m_Player_PCActionsCallbackInterfaces = new List<IPlayer_PCActions>();
+    private readonly InputAction m_Player_PC_Move;
+    private readonly InputAction m_Player_PC_shooting;
+    private readonly InputAction m_Player_PC_Sprint;
+    private readonly InputAction m_Player_PC_RotateCamera;
+    private readonly InputAction m_Player_PC_ZoomCamera;
+    public struct Player_PCActions
     {
         private @PlayerActions m_Wrapper;
-        public PlayerInputsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_PlayerInputs_Move;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerInputs; }
+        public Player_PCActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_PC_Move;
+        public InputAction @shooting => m_Wrapper.m_Player_PC_shooting;
+        public InputAction @Sprint => m_Wrapper.m_Player_PC_Sprint;
+        public InputAction @RotateCamera => m_Wrapper.m_Player_PC_RotateCamera;
+        public InputAction @ZoomCamera => m_Wrapper.m_Player_PC_ZoomCamera;
+        public InputActionMap Get() { return m_Wrapper.m_Player_PC; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerInputsActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerInputsActions instance)
+        public static implicit operator InputActionMap(Player_PCActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayer_PCActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerInputsActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerInputsActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_Player_PCActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player_PCActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @shooting.started += instance.OnShooting;
+            @shooting.performed += instance.OnShooting;
+            @shooting.canceled += instance.OnShooting;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @RotateCamera.started += instance.OnRotateCamera;
+            @RotateCamera.performed += instance.OnRotateCamera;
+            @RotateCamera.canceled += instance.OnRotateCamera;
+            @ZoomCamera.started += instance.OnZoomCamera;
+            @ZoomCamera.performed += instance.OnZoomCamera;
+            @ZoomCamera.canceled += instance.OnZoomCamera;
         }
 
-        private void UnregisterCallbacks(IPlayerInputsActions instance)
+        private void UnregisterCallbacks(IPlayer_PCActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @shooting.started -= instance.OnShooting;
+            @shooting.performed -= instance.OnShooting;
+            @shooting.canceled -= instance.OnShooting;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @RotateCamera.started -= instance.OnRotateCamera;
+            @RotateCamera.performed -= instance.OnRotateCamera;
+            @RotateCamera.canceled -= instance.OnRotateCamera;
+            @ZoomCamera.started -= instance.OnZoomCamera;
+            @ZoomCamera.performed -= instance.OnZoomCamera;
+            @ZoomCamera.canceled -= instance.OnZoomCamera;
         }
 
-        public void RemoveCallbacks(IPlayerInputsActions instance)
+        public void RemoveCallbacks(IPlayer_PCActions instance)
         {
-            if (m_Wrapper.m_PlayerInputsActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Player_PCActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerInputsActions instance)
+        public void SetCallbacks(IPlayer_PCActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerInputsActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Player_PCActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerInputsActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Player_PCActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerInputsActions @PlayerInputs => new PlayerInputsActions(this);
+    public Player_PCActions @Player_PC => new Player_PCActions(this);
+
+    // Player_Mobile
+    private readonly InputActionMap m_Player_Mobile;
+    private List<IPlayer_MobileActions> m_Player_MobileActionsCallbackInterfaces = new List<IPlayer_MobileActions>();
+    private readonly InputAction m_Player_Mobile_Move;
+    private readonly InputAction m_Player_Mobile_shooting;
+    private readonly InputAction m_Player_Mobile_Sprint;
+    private readonly InputAction m_Player_Mobile_RotateCamera;
+    private readonly InputAction m_Player_Mobile_ZoomCamera;
+    public struct Player_MobileActions
+    {
+        private @PlayerActions m_Wrapper;
+        public Player_MobileActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_Mobile_Move;
+        public InputAction @shooting => m_Wrapper.m_Player_Mobile_shooting;
+        public InputAction @Sprint => m_Wrapper.m_Player_Mobile_Sprint;
+        public InputAction @RotateCamera => m_Wrapper.m_Player_Mobile_RotateCamera;
+        public InputAction @ZoomCamera => m_Wrapper.m_Player_Mobile_ZoomCamera;
+        public InputActionMap Get() { return m_Wrapper.m_Player_Mobile; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Player_MobileActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayer_MobileActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Player_MobileActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player_MobileActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @shooting.started += instance.OnShooting;
+            @shooting.performed += instance.OnShooting;
+            @shooting.canceled += instance.OnShooting;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @RotateCamera.started += instance.OnRotateCamera;
+            @RotateCamera.performed += instance.OnRotateCamera;
+            @RotateCamera.canceled += instance.OnRotateCamera;
+            @ZoomCamera.started += instance.OnZoomCamera;
+            @ZoomCamera.performed += instance.OnZoomCamera;
+            @ZoomCamera.canceled += instance.OnZoomCamera;
+        }
+
+        private void UnregisterCallbacks(IPlayer_MobileActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @shooting.started -= instance.OnShooting;
+            @shooting.performed -= instance.OnShooting;
+            @shooting.canceled -= instance.OnShooting;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @RotateCamera.started -= instance.OnRotateCamera;
+            @RotateCamera.performed -= instance.OnRotateCamera;
+            @RotateCamera.canceled -= instance.OnRotateCamera;
+            @ZoomCamera.started -= instance.OnZoomCamera;
+            @ZoomCamera.performed -= instance.OnZoomCamera;
+            @ZoomCamera.canceled -= instance.OnZoomCamera;
+        }
+
+        public void RemoveCallbacks(IPlayer_MobileActions instance)
+        {
+            if (m_Wrapper.m_Player_MobileActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayer_MobileActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Player_MobileActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Player_MobileActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public Player_MobileActions @Player_Mobile => new Player_MobileActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -230,8 +638,20 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
         }
     }
-    public interface IPlayerInputsActions
+    public interface IPlayer_PCActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnShooting(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnRotateCamera(InputAction.CallbackContext context);
+        void OnZoomCamera(InputAction.CallbackContext context);
+    }
+    public interface IPlayer_MobileActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnShooting(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnRotateCamera(InputAction.CallbackContext context);
+        void OnZoomCamera(InputAction.CallbackContext context);
     }
 }
