@@ -20,12 +20,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mouseInput;
     public bool invertLook;
     private Camera playerCamera;
+    public Rigidbody rb;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
         playerCamera = Camera.main;
+        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -59,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         movement = ((transform.forward * moveDirction.z) + (transform.right * moveDirction.x)) .normalized * currentMoveSpeed;
 
-        characterController.Move(movement * Time.deltaTime);
+        //characterController.Move(movement * Time.deltaTime);
+        rb.velocity = movement * Time.deltaTime;
     }
 
     private void LateUpdate()

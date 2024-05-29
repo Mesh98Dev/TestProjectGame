@@ -43,9 +43,10 @@ public class Buellt : MonoBehaviour
             collision.gameObject.GetComponent<EnemyController>().TakeDamage();
             //Destroy(collision.gameObject);
             //EnemyController.instance.TakeDamage();
-            Destroy(gameObject);
             
         }
 
+        if (collision.gameObject.tag != "Player" )
+            Destroy(gameObject);
     }
 }

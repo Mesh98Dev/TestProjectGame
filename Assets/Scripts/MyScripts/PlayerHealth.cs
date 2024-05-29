@@ -28,7 +28,9 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
-            GetComponentInChildren<Camera>().transform.SetParent(null);
+            var camera = GetComponentInChildren<Camera>();
+            if (camera != null)
+                camera.transform.SetParent(null);
             PlayerObject.SetActive(false);
             //anim palyer die
             StartCoroutine(Wait3Seconds());
