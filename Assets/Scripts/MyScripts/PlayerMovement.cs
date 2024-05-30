@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private float verticalRotation;
     private Vector2 mouseInput;
     public bool invertLook;
-    private Camera playerCamera;
+    public Camera playerCamera;
     private Rigidbody rb;
 
     public InputManager inputManager;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake ()
     {
         //characterController = GetComponent<CharacterController>();
-        playerCamera = Camera.main;
+        //playerCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
 
          if (rb != null)  
@@ -92,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
         //characterController.Move(movement * Time.deltaTime);
         //rb.velocity = movement * Time.deltaTime;
         movement = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
-        rb.velocity = new Vector3 (movement.x, 0,movement.y) * moveSpeed * 0.1f;
+        var forward = transform.forward;
+        rb.velocity = (transform.right * movement.x + forward * movement.y).normalized * moveSpeed * 0.1f;
     }
 
     
