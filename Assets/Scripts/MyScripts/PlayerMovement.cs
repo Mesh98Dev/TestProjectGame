@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using InfimaGames.LowPolyShooterPack;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -43,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("rigidbody is null for the player");
          }
 
-         inputManager.actions.Player_PC.ZoomCamera.performed += Context => Zoom(Context.ReadValue<float>());     
+         //inputManager.actions.Player_PC.ZoomCamera.performed += Context => Zoom(Context.ReadValue<float>());     
          }
     /* void Start()
     {
@@ -93,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         //characterController.Move(movement * Time.deltaTime);
         //rb.velocity = movement * Time.deltaTime;
         movement = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
-        rb.velocity = new Vector3 (movement.x, 0,movement.y) * moveSpeed;
+        rb.velocity = new Vector3 (movement.x, 0,movement.y) * moveSpeed * 0.1f;
     }
 
     
@@ -112,11 +111,11 @@ public class PlayerMovement : MonoBehaviour
 //new methods
     private void OnEnable()
     {
-        inputManager.actions.Player_PC.Enable();
+        //inputManager.actions.Player_PC.Enable();
     }
     private void OnDisable()
     {
-        inputManager.actions.Player_PC.Disable();
+        //inputManager.actions.Player_PC.Disable();
     }
     
     
