@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     // Method to start the game
     public void StartGame()
     {
-        SceneManager.LoadScene("Arena");
+        SceneManager.LoadScene("SDAMap");
     }
 
     // Method to quit the game
