@@ -9,14 +9,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
-   // public CharacterController characterController;
-    public float horizontalInput;
-    public float verticalInput;
-    public Vector3 moveDirction;
     public Vector2 movement;
     public float runSpeed;
     
-    public float currentMoveSpeed;
+    private float currentMoveSpeed;
     
     public Transform playerViewPoint;
     public float mouseSensitivity;
@@ -27,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     public InputManager inputManager;
-
-
 
     // Start is called before the first frame update
     void Awake ()
@@ -73,27 +67,18 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-       mouseInput = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
-        horizontalInput = mouseInput.x;//Input.GetAxis("Horizontal"); //change it to tkae unity new input system
-        verticalInput = mouseInput.y;//Input.GetAxis("Vertical"); //change it to tkae unity new input system
-        moveDirction = new Vector3(horizontalInput * moveSpeed,0f, verticalInput * moveSpeed);
-
-       // if (Input.GetKey(KeyCode.LeftShift) ) //change it to tkae unity new input system
-        //{
-           currentMoveSpeed = runSpeed; 
-        //}       
-        //else    
+        if (inputManager.actions.Player_PC.Sprint.IsPressed()) //change it to tkae unity new input system
         {
-        //    currentMoveSpeed = runSpeed;
+           currentMoveSpeed = runSpeed; 
+        }       
+        else    
+        {
+            currentMoveSpeed = moveSpeed;
         }
 
-        //movement = ((transform.forward * moveDirction.z) + (transform.right * moveDirction.x)) .normalized * currentMoveSpeed;
-
-        //characterController.Move(movement * Time.deltaTime);
-        //rb.velocity = movement * Time.deltaTime;
         movement = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
         var forward = transform.forward;
-        rb.velocity = (transform.right * movement.x + forward * movement.y).normalized * moveSpeed * 0.1f;
+        rb.velocity = (transform.right * movement.x + forward * movement.y).normalized * currentMoveSpeed * 0.1f;
     }
 
     

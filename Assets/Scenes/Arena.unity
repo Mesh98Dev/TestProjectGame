@@ -347,15 +347,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  horizontalInput: 0
-  verticalInput: 0
-  moveDirction: {x: 0, y: 0, z: 0}
   movement: {x: 0, y: 0}
   runSpeed: 15
-  currentMoveSpeed: 0
   playerViewPoint: {fileID: 565403771}
   mouseSensitivity: 1
   invertLook: 1
+  playerCamera: {fileID: 0}
   inputManager: {fileID: 0}
 --- !u!143 &393177864
 CharacterController:

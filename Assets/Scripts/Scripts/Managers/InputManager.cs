@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     private PlayerActions m_inputControls;
 
     public PlayerActions actions => m_inputControls;
+      private InputManager inputManager;
 
     private void Awake()
     {

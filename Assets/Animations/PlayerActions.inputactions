@@ -164,6 +164,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4370a19c-3ad4-4891-bbb3-3b6a312fae42",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "84df17a6-f980-4045-9af8-6019301c735e",
                     "path": "<Mouse>/delta",
                     "interactions": "",
