@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI; // Added to use UI components
-
+using System.Collections.Generic;
 public class PlayerShooting : MonoBehaviour
+
 {
+    public float ClipLength = 1f;
+    public AudioSource ShootingSound;
+
     public Transform firePos;
     public GameObject bullet;
     public float timeBetweenShoots = 0.5f; // Corrected the default value
@@ -45,5 +49,8 @@ public class PlayerShooting : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(timeBetweenShoots);
         canShoot = true;
+
+        ShootingSound.Play();
+
     }
 }
