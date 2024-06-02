@@ -9,8 +9,16 @@ public class GameManager : MonoBehaviour
     public int score = 0; // Player's score
     public bool isGameOver = false; // Game over flag
 
+    private EnemyController[] enemies;
+    public WinningUI winningUI;
+      
+
     void Awake()
     {
+        
+        enemies = Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
+
+
         if (instance == null)
         {
             instance = this;
@@ -20,6 +28,32 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Update()   
+    {
+        CheckEnemiesStatus();
+    }
+
+    void CheckEnemiesStatus()
+    {
+        bool allEnemiesDead = true;
+
+        foreach (var enemy in enemies)
+        {
+            if (enemy != null && enemy.currentHealth > 0)
+            {
+                allEnemiesDead = false;
+                break;
+            }
+        }
+
+        if (allEnemiesDead)
+        {
+            // Show the winning UI
+            FindObjectOfType<WinningUI>(includeInactive: true).ShowWinningUI();
+        }
+    }
+
 
     public void AddScore(int points)
     {

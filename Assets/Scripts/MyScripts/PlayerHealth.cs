@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
     public float DamageAmount;
     public GameObject loseCanvas; // Reference to the "You Lose" UI canvas
+    public GameObject crosshair;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         {
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<PlayerShooting>().enabled = false;
+            crosshair.SetActive(false);
             // var camera = GetComponentInChildren<Camera>();
             // if (camera != null)
             //     camera.transform.SetParent(null);
