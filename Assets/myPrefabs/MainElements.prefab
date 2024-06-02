@@ -2532,6 +2532,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4805914954576876450}
     m_Modifications:
+    - target: {fileID: 2243261961824222681, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516086778596716027, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516086778596716027, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704396947307233872, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
       propertyPath: crosshair
@@ -2612,6 +2627,11 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 8420246151648084503}
+    - target: {fileID: 6390272652131968456, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7034228320164248245, guid: 2346f4736299f4216b77c2e0793d6c6e,
         type: 3}
       propertyPath: m_Name
@@ -2620,7 +2640,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7034228320164248245, guid: 2346f4736299f4216b77c2e0793d6c6e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2234310015143443522}
   m_SourcePrefab: {fileID: 100100000, guid: 2346f4736299f4216b77c2e0793d6c6e, type: 3}
 --- !u!4 &227137202954647819 stripped
 Transform:
@@ -2628,6 +2652,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3541635172978305654}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5816666166865121475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7034228320164248245, guid: 2346f4736299f4216b77c2e0793d6c6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3541635172978305654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2234310015143443522
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816666166865121475}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.63
+  m_Height: 2.17
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.53, z: 0}
 --- !u!20 &8420246151648084503 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5043137885309708385, guid: 2346f4736299f4216b77c2e0793d6c6e,

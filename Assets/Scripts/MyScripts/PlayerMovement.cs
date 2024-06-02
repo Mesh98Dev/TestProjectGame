@@ -78,7 +78,10 @@ public class PlayerMovement : MonoBehaviour
 
         movement = inputManager.actions.Player_PC.Move.ReadValue<Vector2>();
         var forward = transform.forward;
-        rb.velocity = (transform.right * movement.x + forward * movement.y).normalized * currentMoveSpeed * 0.1f;
+        var velocity = (transform.right * movement.x + forward * movement.y).normalized * currentMoveSpeed * 0.1f;
+        velocity.y = rb.velocity.y;
+        rb.velocity = velocity;
+        rb.angularVelocity = Vector3.zero;
     }
 
     
