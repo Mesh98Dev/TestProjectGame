@@ -16,13 +16,13 @@ public class ZombieSpawn : MonoBehaviour
         if (other.gameObject.tag == "Player") 
         {
             Invoke("EnemySpawner", 1f);
-            Destroy(gameObject, 10f);
         }
     }
     void EnemySpawner()
     {
 
         Instantiate (zombiePrefab, zombieSpawnPosition.position, zombieSpawnPosition.rotation);
+        Destroy(gameObject, 10f);
     }
     
 }

@@ -21,8 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public bool invertLook;
     public Camera playerCamera;
     private Rigidbody rb;
+    public GameObject zombiePrefab;
 
     public InputManager inputManager;
+
 
     // Start is called before the first frame update
     void Awake ()
