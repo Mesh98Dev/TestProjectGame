@@ -56,6 +56,9 @@ public class PlayerMovement : MonoBehaviour
         //mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity; //change it to tkae unity new input system
         mouseInput = inputManager.actions.Player_PC.RotateCamera.ReadValue<Vector2>();
 
+#if UNITY_ANDROID
+        mouseInput *= 4.0f;
+#endif
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z );
         verticalRotation += mouseInput.y;
