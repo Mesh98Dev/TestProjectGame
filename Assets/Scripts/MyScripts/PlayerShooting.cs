@@ -22,6 +22,8 @@ public class PlayerShooting : MonoBehaviour
         {
             // Ensure the crosshair is visible at the start
             crosshair.enabled = true;
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

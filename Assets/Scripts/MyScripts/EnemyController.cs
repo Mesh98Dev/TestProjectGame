@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
 
     private Animator anim;
 
-    private float attackRange = 3f;
+    [SerializeField] private float attackRange = 2f;
     private bool isAttacking = false;
     public float timeBetweenAttacks = 0.5f;
 
@@ -47,16 +47,20 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if (currentHealth <= 0)
+        {
+            rb.velocity = Vector3.zero;
             return;
+        }
     
         float distance = Vector3.Distance(transform.position, player.transform.position);
         //Debug.Log(distance);
         if (distance < detectingRange)
         {
-//anim.SetBool("inRange", true); // enemy see player
+            //anim.SetBool("inRange", true); // enemy see player
 
             if (distance <= attackRange && !isAttacking)
             {
+                rb.velocity = Vector3.zero;
                 StartCoroutine(AttackForDelay());
                 anim.SetBool("running", false);
                 anim.SetBool("attack", true);
@@ -65,9 +69,12 @@ public class EnemyController : MonoBehaviour
             {
                 MoveTowards();
             }
+            else
+                rb.velocity = Vector3.zero;
         }
         else
         {
+            rb.velocity = Vector3.zero;
             anim.SetBool("running", false);
             anim.SetBool("attack", false);
         }
@@ -79,7 +86,8 @@ public class EnemyController : MonoBehaviour
         Vector3 direction = (playerPosition - transform.position).normalized; // Fixed typo and used transform.position instead of transform.forward
 
         // Use Rigidbody to move the enemy
-        rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+        //rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+        rb.velocity = direction * moveSpeed;
 
         // Rotate the enemy to face the player
         Vector3 lookDirection = playerPosition - transform.position;
@@ -94,12 +102,18 @@ public class EnemyController : MonoBehaviour
         isAttacking = true;
 //anim.SetTrigger("Attack");
         player.GetComponent<PlayerHealth>().DealDamage();
+        if (gameObject.TryGetComponent<AnimationAudioTrigger>(out var trigger))
+            trigger.AttackSound();
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
+        anim.SetBool("attack", false);
     }
 
     public void TakeDamage()
     {
+        if (currentHealth <= 0)
+            return;
+
 //anim enem getting shot
         currentHealth -= healthDamageAmount;
 

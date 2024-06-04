@@ -11,9 +11,12 @@ public class PlayerHealth : MonoBehaviour
     public GameObject loseCanvas; // Reference to the "You Lose" UI canvas
     public GameObject crosshair;
 
+    public HealthBar healthBar;
+
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
     }
 
@@ -23,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth > 0)
             currentHealth -= DamageAmount;
         Debug.Log($"Player damage: {currentHealth} {DamageAmount}");
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
             gameObject.GetComponent<PlayerMovement>().enabled = false;
