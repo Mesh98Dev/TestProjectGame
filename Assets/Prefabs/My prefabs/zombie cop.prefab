@@ -650,7 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   detectingRange: 99999
-  moveSpeed: 2
+  moveSpeed: 3
   attackRange: 2
   timeBetweenAttacks: 0.5
   currentHealth: 100
