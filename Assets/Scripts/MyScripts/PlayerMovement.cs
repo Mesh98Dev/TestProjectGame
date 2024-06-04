@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         mouseInput = inputManager.actions.Player_PC.RotateCamera.ReadValue<Vector2>();
 
 #if UNITY_ANDROID
-        mouseInput *= 4.0f;
+        mouseInput *= 3.0f;
 #endif
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z );
