@@ -643,10 +643,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   detectingRange: 99999
-  moveSpeed: 2
-  timeBetweenAttacks: 0.5
-  currentHealth: 100
-  maxHealth: 100
+  moveSpeed: 6
+  timeBetweenAttacks: 1
+  currentHealth: 20
+  maxHealth: 20
   healthDamageAmount: 10
   healthBar: {fileID: 0}
 --- !u!54 &4694741699108076344
