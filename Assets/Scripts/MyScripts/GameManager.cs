@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         
-        enemies = Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
+        enemies = Object.FindObjectsByType<EnemyController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
 
         if (instance == null)
