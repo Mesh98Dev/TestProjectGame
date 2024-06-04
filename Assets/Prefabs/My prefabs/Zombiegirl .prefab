@@ -604,6 +604,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -6747499805672467325}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddd54bd57892fbc4fa9e507ba168f83c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1537432004523401420}
   m_SourcePrefab: {fileID: 100100000, guid: ddd54bd57892fbc4fa9e507ba168f83c, type: 3}
 --- !u!1 &6251259104579075790 stripped
 GameObject:
@@ -648,6 +652,7 @@ MonoBehaviour:
   player: {fileID: 0}
   detectingRange: 99999
   moveSpeed: 6
+  attackRange: 2
   timeBetweenAttacks: 1
   currentHealth: 20
   maxHealth: 20
@@ -713,7 +718,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2551e560d7a58b642b4b95782ded572c, type: 3}
   m_Resource: {fileID: 8300000, guid: 2551e560d7a58b642b4b95782ded572c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -798,6 +803,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1537432004523401420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251259104579075790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87abd83d138329c45af3aac7803d2d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 2551e560d7a58b642b4b95782ded572c, type: 3}
+  attackSounds:
+  - {fileID: 8300000, guid: 69af0db27e15da74b81f64e1df46d4b7, type: 3}
 --- !u!4 &6740551242741507188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ddd54bd57892fbc4fa9e507ba168f83c,
