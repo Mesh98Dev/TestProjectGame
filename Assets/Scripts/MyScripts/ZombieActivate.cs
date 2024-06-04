@@ -24,6 +24,7 @@ public class ZombieActivate : MonoBehaviour
 
         if (other.gameObject.tag == "Player") 
         {
+            activated = true;
             foreach (var enemy in enemies)
             {
                 if (enemy != null)

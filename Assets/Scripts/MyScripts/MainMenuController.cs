@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    void Awake()
+    {
+        
+    }
+
     // Method to start the game
     public void StartGame()
     {
