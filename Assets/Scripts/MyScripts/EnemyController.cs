@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -18,15 +19,12 @@ public class EnemyController : MonoBehaviour
     public int maxHealth = 100;
     public int healthDamageAmount;
 
-    public static EnemyController instance;
-
     private Rigidbody rb; // Added Rigidbody component
 
 [SerializeField] HealthBar healthBar;
 
     private void Awake()
     {
-        instance = this;
         
         healthBar = GetComponentInChildren<HealthBar>();
     }
@@ -43,12 +41,20 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody>(); // Get Rigidbody component
     }
 
+    void ResetVelocity()
+    {
+        var v = rb.velocity;
+        v.x = 0;
+        v.z = 0;
+        rb.velocity = v;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (currentHealth <= 0)
         {
-            rb.velocity = Vector3.zero;
+            ResetVelocity();
             return;
         }
     
@@ -60,7 +66,7 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= attackRange && !isAttacking)
             {
-                rb.velocity = Vector3.zero;
+                ResetVelocity();
                 StartCoroutine(AttackForDelay());
                 anim.SetBool("running", false);
                 anim.SetBool("attack", true);
@@ -70,11 +76,11 @@ public class EnemyController : MonoBehaviour
                 MoveTowards();
             }
             else
-                rb.velocity = Vector3.zero;
+                ResetVelocity();
         }
         else
         {
-            rb.velocity = Vector3.zero;
+            ResetVelocity();
             anim.SetBool("running", false);
             anim.SetBool("attack", false);
         }
@@ -87,10 +93,15 @@ public class EnemyController : MonoBehaviour
 
         // Use Rigidbody to move the enemy
         //rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
-        rb.velocity = direction * moveSpeed;
+        var d = direction * moveSpeed;
+        var v = rb.velocity;
+        v.x = d.x;
+        v.z = d.z;
+        rb.velocity = v;
 
         // Rotate the enemy to face the player
         Vector3 lookDirection = playerPosition - transform.position;
+        lookDirection.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, Time.deltaTime * moveSpeed);
         //enemy moving anim
@@ -102,7 +113,7 @@ public class EnemyController : MonoBehaviour
         isAttacking = true;
 //anim.SetTrigger("Attack");
         player.GetComponent<PlayerHealth>().DealDamage();
-        if (gameObject.TryGetComponent<AnimationAudioTrigger>(out var trigger))
+        if (gameObject.TryGetComponent<animationaudio>(out var trigger))
             trigger.AttackSound();
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
@@ -123,6 +134,8 @@ public class EnemyController : MonoBehaviour
         {
             //anim enemy death death
             anim.SetTrigger("die");
+            if (gameObject.TryGetComponent<animationaudio>(out var trigger))
+                trigger.DeathSound();
             Destroy(gameObject, 5);
         }
     }

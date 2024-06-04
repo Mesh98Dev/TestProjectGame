@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AnimationAudioTrigger : MonoBehaviour
+public class animationaudio : MonoBehaviour
 {
-  
+    public AudioClip deathSound;
     public AudioClip[] attackSounds;
     private AudioSource soundSource;
     // Start is called before the first frame update
@@ -16,12 +16,17 @@ public class AnimationAudioTrigger : MonoBehaviour
     }
     public void AttackSound()
     {
-        int n = Random.Range(1, attackSounds.Length);
+        int n = Random.Range(0, attackSounds.Length);
         soundSource.clip = attackSounds[n];
         soundSource.PlayOneShot(soundSource.clip);
 
-        attackSounds[n] = attackSounds[0];
-        attackSounds[0] = soundSource.clip;
     }
+
+    public void DeathSound()
+    {
+        soundSource.clip = deathSound;
+        soundSource.PlayOneShot(soundSource.clip);
+    }
+
 
 }

@@ -25,7 +25,10 @@ public class ZombieActivate : MonoBehaviour
         if (other.gameObject.tag == "Player") 
         {
             foreach (var enemy in enemies)
-                enemy.SetActive(true);
+            {
+                if (enemy != null)
+                    enemy.SetActive(true);
+            }
         }
     }
 
