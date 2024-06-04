@@ -161,7 +161,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.DefaultCompany.TestProjectGame
+    Android: com.SDAgames.StayAlive101Demo
     Standalone: com.SDAgames.StayAlive101Demo
   buildNumber:
     Bratwurst: 0
@@ -320,36 +320,6 @@ PlayerSettings:
       m_Kind: 0
       m_SubKind: 
     - m_Textures: []
-      m_Width: 432
-      m_Height: 432
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures: []
-      m_Width: 324
-      m_Height: 324
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures: []
-      m_Width: 216
-      m_Height: 216
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures: []
-      m_Width: 162
-      m_Height: 162
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures: []
-      m_Width: 108
-      m_Height: 108
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures: []
-      m_Width: 81
-      m_Height: 81
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures: []
       m_Width: 192
       m_Height: 192
       m_Kind: 1
@@ -378,6 +348,48 @@ PlayerSettings:
       m_Width: 36
       m_Height: 36
       m_Kind: 1
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 21677ed842d684e7590c084ab55b70cd, type: 3}
+      - {fileID: 2800000, guid: 9c882ec5e55d4400fb3d573abc078882, type: 3}
+      m_Width: 432
+      m_Height: 432
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 1152d325e398248e28707abc0c0b3a28, type: 3}
+      - {fileID: 2800000, guid: 02772b629139142fa8b73e13e0dd4b0a, type: 3}
+      m_Width: 324
+      m_Height: 324
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 6fbc492b48c7e488da5f43590ecca15b, type: 3}
+      - {fileID: 2800000, guid: 32793217c72824a519e8280f4534730e, type: 3}
+      m_Width: 216
+      m_Height: 216
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 4e7550c3cbc1048fda7553dae9120880, type: 3}
+      - {fileID: 2800000, guid: 944bd7f8312774faa9a941c2c57471bc, type: 3}
+      m_Width: 162
+      m_Height: 162
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 4a3bc8602ccaf47958c628e89a3e586c, type: 3}
+      - {fileID: 2800000, guid: 37a04501568f649bfaa73b3b9d118fac, type: 3}
+      m_Width: 108
+      m_Height: 108
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: b5f6198b6227f4fbfb11cb02991c24ea, type: 3}
+      - {fileID: 2800000, guid: 83c6d7aff4c024b73903cb6927ced49a, type: 3}
+      m_Width: 81
+      m_Height: 81
+      m_Kind: 2
       m_SubKind: 
   m_BuildTargetBatching: []
   m_BuildTargetShaderSettings: []
