@@ -654,8 +654,8 @@ MonoBehaviour:
   moveSpeed: 6
   attackRange: 2
   timeBetweenAttacks: 1
-  currentHealth: 20
-  maxHealth: 20
+  currentHealth: 30
+  maxHealth: 30
   healthDamageAmount: 10
   healthBar: {fileID: 0}
 --- !u!54 &4694741699108076344
